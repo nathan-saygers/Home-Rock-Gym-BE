@@ -1,0 +1,22 @@
+{
+  "name": "home-rock-gym-be",
+  "version": "1.0.0",
+  "description": "Software for managing your home rock gym",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathan-saygers/Home-Rock-Gym-BE.git"
+  },
+  "author": "Nathan Saygers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathan-saygers/Home-Rock-Gym-BE/issues"
+  },
+  "homepage": "https://github.com/nathan-saygers/Home-Rock-Gym-BE#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
