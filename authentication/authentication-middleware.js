@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
   if (token) {
     jwt.verify(token, jwtSecret, (err, decodedToken) => {
       if (err) {
-        res.status(401).json({ message: "you don't have access to this"});
+        res.status(401).json({ you: "can't touch this!" });
       } else {
         req.user = { user: decodedToken.user };
 
@@ -16,6 +16,6 @@ module.exports = (req, res, next) => {
       }
     });
   } else {
-    res.status(401).json({ message: "you don't have access to this"});
+    res.status(401).json({ you: "shall not pass!" });
   }
-}
+};
