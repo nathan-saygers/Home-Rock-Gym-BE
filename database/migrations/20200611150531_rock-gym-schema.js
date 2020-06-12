@@ -48,8 +48,10 @@ exports.up = function(knex) {
   })
   .createTable("holds", tbl => {
     tbl.increments();
+    tbl.string("name")
+      .notNullable()
+    tbl.string("size")
     tbl.string("type")
-      .notNullable();
     tbl.string("photo")
       .notNullable();
   })
