@@ -96,5 +96,4 @@ exports.down = function(knex) {
   .dropTableIfExists("sends")
   .dropTableIfExists("appointments")
   .dropTableIfExists("users")
-
 };
