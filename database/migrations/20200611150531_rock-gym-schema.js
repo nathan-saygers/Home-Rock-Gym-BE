@@ -5,7 +5,6 @@ exports.up = function(knex) {
     tbl.string("username", 128)
       .unique()
       .notNullable();
-    tbl.integer("projects")
   })
   .createTable("appointments", tbl => {
     tbl.increments();
