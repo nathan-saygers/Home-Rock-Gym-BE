@@ -68,7 +68,7 @@ exports.up = function(knex) {
       .inTable("holds")
       .onUpdate("CASCADE")
       .onDelete("CASCADE")
-    tbl.string("hold_location")
+    tbl.string("wall_location")
       .notNullable()
   })
   .createTable("favorited_problems", tbl => {
@@ -88,5 +88,13 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  
+  return knex.schema
+  .dropTableIfExists("favorited_problems")
+  .dropTableIfExists("holds_problems_map")
+  .dropTableIfExists("holds")
+  .dropTableIfExists("problems")
+  .dropTableIfExists("sends")
+  .dropTableIfExists("appointments")
+  .dropTableIfExists("users")
+
 };
