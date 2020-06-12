@@ -5,7 +5,6 @@ exports.up = function(knex) {
     tbl.string("username", 128)
       .unique()
       .notNullable();
-    tbl.integer("saved_problems")
     tbl.integer("projects")
   })
   .createTable("appointments", tbl => {
@@ -40,6 +39,43 @@ exports.up = function(knex) {
       .notNullable()
     tbl.integer("angle")
     tbl.str("photo")
+  })
+  .createTable("holds", tbl => {
+    tbl.increments();
+    tbl.string("type")
+      .notNullable();
+    tbl.string("photo")
+      .notNullable();
+  })
+  .createTable("holds_problems_map", tbl => {
+    tbl.integer("problem_id")
+      .notNullable()
+      .references("id")
+      .inTable("problems")
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE")
+    tbl.integer("hold_id")
+      .notNullable()
+      .references("id")
+      .inTable("holds")
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE")
+    tbl.string("hold_location")
+      .notNullable()
+  })
+  .createTable("favorited_problems", tbl => {
+    tbl.integer("user")
+      .notNullable()
+      .references("id")
+      .inTable("users")
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE")
+    tbl.integer("problem_id")
+      .notNullable()
+      .references("id")
+      .inTable("problems")
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE")
   })
 };
 
