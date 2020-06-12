@@ -25,6 +25,8 @@ exports.up = function(knex) {
       .onUpdate("CASCADE")
       .onDelete("CASCADE")
     tbl.datetime("send_date", options={useTz: false})
+    tbl.integer("attempts")
+      .notNullable()
   })
   .createTable("problems", tbl => {
     tbl.increments();
