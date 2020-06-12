@@ -1,13 +1,16 @@
 
 exports.seed = function(knex) {
   // Deletes ALL existing entries
-  return knex('table_name').del()
+  return knex('sends').del()
     .then(function () {
       // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
+      return knex('sends').insert([
+        {id: 1, user: 'crush_master_08', send_date: '2017-01-07 10:00:00'},
+        {id: 2, user: 'crush_master_08', send_date: '2018-07-07 10:00:00'},
+        {id: 3, user: 'crimp_lord', send_date: '2020-01-01 10:00:00'},
+        {id: 4, user: 'crimp_lord', send_date: '2017-03-21 10:00:00'},
+        {id: 5, user: 'swing_holder', send_date: '1989-04-20 10:00:00'},
+        {id: 6, user: 'swing_holder', send_date: '1978-03-07 10:00:00'}
       ]);
     });
 };
