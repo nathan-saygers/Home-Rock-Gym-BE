@@ -56,6 +56,7 @@ exports.up = function(knex) {
       .notNullable();
   })
   .createTable("holds_problems_map", tbl => {
+    tbl.increments()
     tbl.integer("problem_id")
       .notNullable()
       .references("id")
@@ -72,6 +73,7 @@ exports.up = function(knex) {
       .notNullable()
   })
   .createTable("favorited_problems", tbl => {
+    tbl.increments()
     tbl.integer("user")
       .notNullable()
       .references("id")
