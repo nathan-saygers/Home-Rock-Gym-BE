@@ -28,7 +28,10 @@ exports.up = function(knex) {
   })
   .createTable("problems", tbl => {
     tbl.increments();
-    tbl.integer("user")
+    tbl.string("problem_name")
+      .notNullable()
+      .unique()
+    tbl.integer("setter")
       .notNullable()
       .references("id")
       .inTable("users")
@@ -38,6 +41,8 @@ exports.up = function(knex) {
       .notNullable()
     tbl.integer("angle")
     tbl.str("photo")
+    tbl.datetime("create_at", options={useTz: false})
+      .notNullable
   })
   .createTable("holds", tbl => {
     tbl.increments();
