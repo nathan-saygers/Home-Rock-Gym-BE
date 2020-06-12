@@ -43,7 +43,7 @@ exports.up = function(knex) {
       .notNullable()
     tbl.integer("angle")
     tbl.str("photo")
-    tbl.datetime("create_at", options={useTz: false})
+    tbl.datetime("created_at", options={useTz: false})
       .notNullable
   })
   .createTable("holds", tbl => {
