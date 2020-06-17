@@ -12,7 +12,8 @@ exports.seed = function(knex) {
           grade: "vHard",
           angle: 45,
           photo: "www.thisisaphotolink.com",
-          created_at: "2017-01-07 10:00:00"
+          created_at: "2017-01-07 10:00:00",
+          is_hidden: false
         },
         {
           id: 2, 
@@ -21,7 +22,8 @@ exports.seed = function(knex) {
           grade: "V7",
           angle: 25,
           photo: "www.thisisaphotolink.com",
-          created_at: "2010-01-07 05:20:30"
+          created_at: "2010-01-07 05:20:30",
+          is_hidden: false
         },
         {
           id: 3, 
@@ -30,7 +32,8 @@ exports.seed = function(knex) {
           grade: "V5",
           angle: 15,
           photo: "www.thisisaphotolink.com",
-          created_at: "2018-06-23 10:00:00"
+          created_at: "2018-06-23 10:00:00",
+          is_hidden: false
         },
         {
           id: 4, 
@@ -39,7 +42,8 @@ exports.seed = function(knex) {
           grade: "VB",
           angle: 90,
           photo: "www.thisisaphotolink.com",
-          created_at: "2019-01-17 10:00:00"
+          created_at: "2019-01-17 10:00:00",
+          is_hidden: false
         },
       ]);
     });
