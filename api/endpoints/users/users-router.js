@@ -5,7 +5,7 @@ const Users = require("./users-models");
 router.post("/new_user", (req, res) => {
   const newUser = req.body;
   
-  if (newUser.username) {
+  if (newUser) {
     Users.addUser(newUser)
       .then(user => {
         res.status(201).json({...user[0]})
