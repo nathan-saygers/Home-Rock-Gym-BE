@@ -16,18 +16,6 @@ exports.up = function(knex) {
       .onDelete("CASCADE")
     tbl.datetime("climb_date", options={useTz: false})
   })
-  .createTable("sends", tbl => {
-    tbl.increments();
-    tbl.integer("user")
-      .notNullable()
-      .references("id")
-      .inTable("users")
-      .onUpdate("CASCADE")
-      .onDelete("CASCADE")
-    tbl.datetime("send_date", options={useTz: false})
-    tbl.integer("attempts")
-      .notNullable()
-  })
   .createTable("problems", tbl => {
     tbl.increments();
     tbl.string("problem_name")
@@ -45,6 +33,27 @@ exports.up = function(knex) {
     tbl.string("photo")
     tbl.datetime("created_at", options={useTz: false})
       .notNullable
+    tbl.bool("is_hidden")
+      .notNullable
+  })
+  .createTable("sends", tbl => {
+    tbl.increments();
+    tbl.integer("problem_id")
+      .notNullable()
+      .references("id")
+      .inTable("problems")
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE")
+    tbl.integer("user_id")
+      .notNullable()
+      .references("id")
+      .inTable("users")
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE")
+    tbl.datetime("send_date", options={useTz: false})
+    tbl.integer("attempts")
+      .notNullable()
+    tbl.string("notes")
   })
   .createTable("holds", tbl => {
     tbl.increments();
