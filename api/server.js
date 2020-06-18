@@ -19,7 +19,7 @@ const server = express();
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
-server.use(morgan());
+server.use(morgan('tiny'));
 
 // Router calls
 server.use("/api/appointments", appointmentsRouter);
@@ -33,6 +33,5 @@ server.get("/", (req, res) => {
   res.status(200).json({ message: "Let's send!" })
 })
 
-// Routes
-// ex. server.use("/api/monthly_costs", monthlyRouter);
+module.exports = server;
 
