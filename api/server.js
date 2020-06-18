@@ -1,5 +1,5 @@
 // Express
-const express = require("express");
+const express = require("express")("development");
 
 // Middleware
 const morgan = require("morgan");
