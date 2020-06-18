@@ -1,4 +1,4 @@
-const knex = require("knex")("development");
+const knex = require("knex");
 
 require("dotenv").config();
 
