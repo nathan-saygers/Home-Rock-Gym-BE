@@ -55,9 +55,9 @@ function findFavProblemById(id) {
 // user's fav problems
 
 function findFavProblems(user_id) {
-  return db.select("p.id, fp.user")
+  return db.select("p.id", "fp.user")
     .from("problems as p")
-    .join("favorite_problems as fp, fp.problem_id, p.id")
+    .join("favorited_problems as fp", "fp.problem_id", "p.id")
     .where("fp.user", user_id)
 }
 
