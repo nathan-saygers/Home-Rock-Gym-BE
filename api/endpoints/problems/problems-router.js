@@ -87,4 +87,51 @@ router.put("/:id", (req, res) => {
   }
 });
 
+// Routes related to favorite problems bridge table
+
+// Get favorite problems
+router.get("/favs", (req, res) => {
+  const user_id = req.body.user_id;
+
+  if (user_id) {
+    Problems.findFavProblems(user_id)
+      .then(favs => {
+        res.status(200).json(favs)
+      })
+      .catch(error => {
+        console.log(error)
+        res.status(500).json({
+          message: `Something went wrong getting favs for user ${user_id}`
+        })
+      })
+  } else {
+    res.status(400).json({
+      message: "A user id (req.body.user_id) must be supplied to find favorite problems"
+    })
+  }
+})
+
+// Add a favorite problem
+router.post("/favs", (req, res) => {
+  const user_id = req.body.user_id;
+  const problem_id = req.body.problem_id;
+
+  if (user_id && problem_id) {
+    Problems.addFavProblem(user_id, problem_id)
+      .then(fav => {
+        res.status(201).json({...fav[0]})
+      })
+      .catch(error => {
+        console.log(error)
+        res.status(500).json({
+          message: "The server encountered an error making a new fav problem"
+        })
+      })
+  } else {
+    res.status(400).json({
+      message: `A user id (req.body.user_id) and problem id (req.body.problem_id) are required to add a new favorite problem`
+    })
+  }
+})
+
 module.exports = router;
