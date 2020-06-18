@@ -7,7 +7,8 @@ module.exports = {
   editProblem,
   findFavProblems,
   addFavProblem,
-  findFavProblemById
+  findFavProblemById,
+  removeFavProblem
 }
 
 function findAll() {
@@ -68,4 +69,12 @@ async function addFavProblem(user_id, problem_id) {
     .returning("id")
 
   return findFavProblemById(newEntry[0])
+}
+
+// Function for deleting a favorited_problem
+
+function removeFavProblem(id) {
+  return db("favorited_problems")
+    .where({ id })
+    .del();
 }

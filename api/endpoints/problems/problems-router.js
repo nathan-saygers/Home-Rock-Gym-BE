@@ -134,4 +134,29 @@ router.post("/favs", (req, res) => {
   }
 })
 
+// Remove favorited problem
+
+router.delete("/fav/:id", (req, res) => {
+  const id = req.params.id;
+
+  if (id) {
+    Problems.removeProblem(id)
+      .then(bool => {
+        if (bool > 0) {
+          res.status(202).json({
+            message: `favorited problem ${id} deleted`
+          })
+        } else {
+          res.status(400).json({
+            message: `favorited problem ${id} does not exist`
+          })
+        }
+      })
+  } else {
+    res.status(400).json({
+      message: "Favorited Problem ID required"
+    })
+  }
+})
+
 module.exports = router;
