@@ -22,7 +22,7 @@ function findById(id) {
     .where({ id })
 }
 
-function addProblem(newProblem) {
+async function addProblem(newProblem) {
   const id = await db("problems")
     .insert(newProblem)
     .returning("id");
