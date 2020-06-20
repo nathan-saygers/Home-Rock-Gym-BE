@@ -55,9 +55,9 @@ function findFavProblemById(id) {
 // user's fav problems
 
 function findFavProblems(user_id) {
-  return db.select("p.id, fp.user")
+  return db.select("p.id", "fp.user")
     .from("problems as p")
-    .join("favorite_problems as fp, fp.problem_id, p.id")
+    .join("favorited_problems as fp", "fp.problem_id", "p.id")
     .where("fp.user", user_id)
 }
 
@@ -65,7 +65,7 @@ function findFavProblems(user_id) {
 
 async function addFavProblem(user_id, problem_id) {
   const newEntry = await db("favorited_problems")
-    .insert({user_id, problem_id})
+    .insert({"user": user_id, "problem_id": problem_id})
     .returning("id")
 
   return findFavProblemById(newEntry[0])

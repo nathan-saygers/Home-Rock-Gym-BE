@@ -17,7 +17,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/new_app", (req, res) => {
+router.post("/", (req, res) => {
   const newAppointment = req.body;
 
   if(newAppointment.user && newAppointment.climb_date) {
@@ -71,7 +71,7 @@ router.put("/:id", (req, res) => {
   const id = req.params.id;
   const newAppData = req.body;
   
-  if (id && newUserData) {
+  if (id && newAppData) {
     Appointments.editAppointment(id, newAppData)
       .then(bool => {
         if(bool > 0) {
