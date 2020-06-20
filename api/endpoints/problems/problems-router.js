@@ -136,7 +136,7 @@ router.post("/favs", (req, res) => {
 
 // Remove favorited problem
 
-router.delete("/fav/:id", (req, res) => {
+router.delete("/favs/:id", (req, res) => {
   const id = req.params.id;
 
   if (id) {

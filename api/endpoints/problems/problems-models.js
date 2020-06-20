@@ -65,7 +65,7 @@ function findFavProblems(user_id) {
 
 async function addFavProblem(user_id, problem_id) {
   const newEntry = await db("favorited_problems")
-    .insert({user_id, problem_id})
+    .insert({"user": user_id, "problem_id": problem_id})
     .returning("id")
 
   return findFavProblemById(newEntry[0])
