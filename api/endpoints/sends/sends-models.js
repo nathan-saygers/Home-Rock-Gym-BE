@@ -9,18 +9,18 @@ module.exports = {
 }
 
 function findAll() {
-  return db("users")
+  return db("sends")
 }
 
 function findBySendID(id) {
   return db
     .select("*")
-    .from("users")
+    .from("sends")
     .where({ id })
 }
 
 async function addSend(newSendInfo) {
-  const id = await db("users")
+  const id = await db("sends")
     .insert(newSendInfo)
     .returning("id")
   
@@ -28,13 +28,13 @@ async function addSend(newSendInfo) {
 }
 
 function removeSend(id) {
-  return db("users")
+  return db("sends")
     .where({ id })
     .del()
 }
 
 function editSend(id, newSendInfo) {
-  return db("users")
+  return db("sends")
     .where({ id })
     .update(newSendInfo)
 }

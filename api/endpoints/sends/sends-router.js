@@ -21,7 +21,7 @@ router.post("/", (req, res) => {
   if (newSend) {
     Sends.addSend(newSend)
       .then(send => {
-        res.status(200).json(...send[0])
+        res.status(200).json(send[0])
       })
       .catch(error => {
         console.log(error)
